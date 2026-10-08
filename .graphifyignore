@@ -1,0 +1,26 @@
+# Repository and IDE metadata
+.git/
+.gradle/
+.idea/
+.kotlin/
+.agents/
+.codex/
+
+# Build outputs and generated binaries
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.class
+gradlew
+gradlew.bat
+
+# Graphify's local installation and generated index
+.graphify-venv/
+graphify-out/
+
+# Tool caches
+**/__pycache__/
+*.pyc

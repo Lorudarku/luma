@@ -1,0 +1,6 @@
+LibTomCrypt: public domain option selected.
+Source: https://github.com/sqlcipher/libtomcrypt/blob/476a9579ae94f32b9ea9e2747bfb04b302370259/LICENSE
+
+LibTomCrypt is public domain.  As should all quality software be.
+
+Tom St Denis
