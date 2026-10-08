@@ -32,7 +32,12 @@ jobs:
           develocity-injection-enabled: false
           cache-read-only: ${{ github.event_name == 'pull_request' }}
       - name: Install Android SDK
-        run: sdkmanager 'platforms;android-37.0' 'build-tools;36.0.0'
+        run: |
+          # 1. Locate the preinstalled tool without relying on the runner's PATH.
+          task_sdkmanager="$(find "${ANDROID_HOME:?}/cmdline-tools" -type f -name sdkmanager -print -quit)"
+          test -n "$task_sdkmanager" && test -x "$task_sdkmanager"
+          # 2. Install the project's pinned SDK packages.
+          "$task_sdkmanager" 'platforms;android-37.0' 'build-tools;36.0.0'
       - name: Verify tests, lint, APK and unsigned bundle
         run: ./gradlew test lint assembleDebug assembleDebugAndroidTest bundleRelease --console=plain
       - name: Verify reproducible Room schema
